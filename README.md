@@ -1,5 +1,5 @@
 # NutBay
-..Home of nature enthusiast..
+*..Home of nature enthusiast..
 
 # Description
 
