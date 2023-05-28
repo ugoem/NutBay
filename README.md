@@ -2,7 +2,7 @@
 *..Home of nature enthusiast..*
 
 ## Landing Page
-![](https://imgur.com/kwQWvyf)
+![](https://auenetengtech.com.ng/alx/landing_page2.JPG)
 
 # Description
 
