@@ -2,7 +2,7 @@
 *..Home of nature enthusiast..*
 
 ## Landing Page
-![image](https://drive.google.com/file/d/1KXFtpKubMWp7Cjm0Q7S1QMtWYmTjAQS5/view?usp=sharing)
+![image](https://imgur.com/a/TWeifvK)
 
 # Description
 
