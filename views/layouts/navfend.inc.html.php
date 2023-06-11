@@ -51,11 +51,11 @@ date_default_timezone_set("Africa/Lagos");
 					  <!-- Navigation area -->
 				      <nav id="nav-menu-container">
 				        <ul class="nav-menu">
-				          <li><a href="?h_home">Home</a></li>
-				          <li><a href="#">About</a></li>
+				          <li><a href=".">Home</a></li>
+				          <li><a href="?about_us#about">About</a></li>
 				          <li><a href="#">Features</a></li>
 				          <li><a href="#">How it Works</a></li>
-				        <li><a href="?login">Login</a></li> 
+				        <li><a href="app/">Login</a></li> 
 				          <li class="menu-has-children"><a href="#">Blog</a>
 				          <!--  <ul>
 				              <li><a href="blog-home.html">Blog Home</a></li>

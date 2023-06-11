@@ -1,106 +1,45 @@
 <?php 
-		//error_reporting(E_ALL);
-		//include 'includes/magicquotes.inc.php';
+		error_reporting(E_ALL);
 		
-		error_reporting(0);
- 			
+		
+		//error_reporting(0);
+ 		include 'app/models/includes/signup-Activation.inc.php';
+ 				
 		//------
-	
-		//Temporal Control Post activity page
-		if (isset($_GET['activity'])) 
-		{ 
-			include 'views/post-activity.html.php';
-
-			exit(0);
-		}
-		//Control Login page display
-		if (isset($_GET['login'])) 
-		{ 
-			$action = 'dashboard';
-			include 'views/login.html.php';
-
-			exit(0);
-		}
-		
-
-		
-		// Control logout page
-		if (isset($_GET['logout'])) 
-		{ 
-			//userIsLoggedIn();
-			require_once 'models/includes/access.inc.php';
-			include 'views/login.html.php';
-
-			exit(0);
-		}
-		//Control Contact us page
-		if (isset($_GET['contact_us'])) 
-		{ 
-			include 'views/contact.html.php';
-
-			exit(0);
-		}	
-
-	//newsletters
-	if (isset($_GET['newsletters'])) 
-	{ 
-		include 'models/includes/dbConfig.inc.php' ;
-		$newsl = mysqli_real_escape_string($con, $_POST['newsl']);
-		
-		// check if the email is already subscribed
-		$result = mysqli_query($con, "SELECT nid FROM newsletters WHERE nemail = '$newsl' ");
-		$rowcount =  mysqli_num_rows($result);
-		if ($rowcount > 0)
-		{
-			$error = 'Error subscribing to newsletter. Email already subscribed';
-							
-			include 'views/home.html.php';
-			mysqli_close($con);
-			exit (0);
-		}
-			$sql = "INSERT INTO newsletters SET
-					nemail ='$newsl'";
-			$result = mysqli_query($con, $sql);
- 
-				$_SESSION['msgr'] = "Thank you for subscribing to our newsletter." ;
-				include 'views/home.html.php';
-				mysqli_close($con);
-				exit (0);
+		//Control sign up page activities
+	//empty sign-up page-front end is built up and dispalyed with minimal items
+	if (isset($_GET['sign_up'])) 
+	{
+		//$pagetitle = 'New User';
+		$action = "add_data";
+		$fname=  '';
+		$lname=  '';
+		$contno= '';
+		$email = '';
+		$act_type = '';
+		$id = '';
+		$created_at = '';
+		$act_status = '';
+		$activ_code ='';
+		$terms = '';	
+		$button = 'Sign Up';
+		include 'views/signup.html.php';
+		exit(0);
 	}
-		
- 		//Control sign up page
-//empty sign-up page-front end is built up and dispalyed with minimal items
-if (isset($_GET['sign_up'])) 
-{
-	//$pagetitle = 'New User';
-	$action = "add_data";
-	$username = '';
-	$fname=  '';
-	$lname=  '';
-	$contno= '';
-	$email = '';
-	$act_type = '';
-	$id = '';
-	$created_at = '';
-	$act_status = '';
-	$activ_code ='';
-	$terms = '';	
-	$button = 'Sign Up';
-	include 'app/views/signup.html.php';
-	exit(0);
-}
-
-if (isset($_GET['add_data']))
+	//register new user
+	//if (isset($_GET['add_data']))
+	if(isset($_POST['action']) AND $_POST['action']=="add_data")
 	{
 				session_start();
-				include 'models/includes/dbConfig.inc.php' ;
+				include 'app/models/includes/dbConfig.inc.php' ;
 				$salt = '5e7bf38ae95cce501c3f5357b919c12c' ;
 				// receive all input values from the form. and prepare them for use in database
-				$username = mysqli_real_escape_string($con, $_POST['username']);
+				
 				$fname = mysqli_real_escape_string($con, $_POST['firstname']);
 				$lname = mysqli_real_escape_string($con, $_POST['lastname']);
 				$contno = mysqli_real_escape_string($con, $_POST['phone']);
 				$_SESSION['email'] =  $email = mysqli_real_escape_string($con, $_POST['email']);
+				//$email =  $email = mysqli_real_escape_string($con, $_POST['email']);
 				$password = MD5($_POST['password'].$salt);
 				$act_status = 0;
 				$activ_code = mysqli_real_escape_string($con,random_int(100000, 9999999));
@@ -116,7 +55,6 @@ if (isset($_GET['add_data']))
 						mysqli_query($con, "START TRANSACTION");
 						
 						$sql = "INSERT INTO user SET
-						username ='$username', 
 						firstname = '$fname', 
 						lastname = '$lname', 
 						phone = '$contno',  
@@ -128,7 +66,7 @@ if (isset($_GET['add_data']))
 						password = '$password' ";
 						if (!mysqli_query($con, $sql))
 						{
-							$error = 'Error adding submitted user details.'. mysqli_error($con);
+							$error = 'Error adding submitted user details.'. mysqli_error($con);;
 							unset($_SESSION['activ_code_hash'] );
 							include 'views/signup.html.php';
 							exit();
@@ -137,10 +75,10 @@ if (isset($_GET['add_data']))
 						//insert registered user ID into user_role table
 						$userid = mysqli_insert_id($con);
 	
-						$sql = "INSERT INTO user_role SET
+						$sql1 = "INSERT INTO user_role SET
 						userid = '$userid',
 						roleid = '$role' ";
-						if (mysqli_query($con, $sql)) 
+						if (mysqli_query($con, $sql1)) 
 						{
   	
 							mysqli_query($con, "COMMIT");
@@ -188,7 +126,7 @@ if (isset($_GET['add_data']))
 							*/
 							
 							//get html content of the email
-$htmlcontent = 
+		$htmlcontent = 
 			'<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 			<html xmlns="http://www.w3.org/1999/xhtml">
@@ -341,14 +279,14 @@ $htmlcontent =
 							//sending email
 							$send  = @mail($to, $subject, $htmlcontent, $headers);
 
-							$_SESSION['msg_add'] = "User Details added successfully. 
+							$_SESSION['msg'] = "User account created successfully. 
 							An email had been sent to the email address provided with activation code.";
 							//include 'pages/welcome-msg.html.php';
 							include 'views/signup.html.php';
 							exit();
 						} else 
 						{ 
-							$error_add = 'Error recording user ID to user role table.'. mysqli_error($con);
+							$error = 'Error recording user ID to user role table.'. mysqli_error($con);
 							unset($_SESSION['activ_code_hash'] );
 
 							mysqli_query($con, "ROLLBACK");
@@ -356,114 +294,83 @@ $htmlcontent =
 							exit(0);
 						}
 						
-	}	
+	}
 
 
 
-		 //function perform activation proper is here
- if (isset($_GET['activparam']))
-	{
-		//session_start();
-		include 'models/includes/dbConfig.inc.php' ;
-		$activ_code = mysqli_real_escape_string($con, $_POST['activate']);
-		$activ_code_hash_comfirm = MD5($activ_code);
-		$email =  $_GET['activparam'];
-	
-		//	$email=  $_SESSION['email'];
-		//echo $email;
- 
-		//echo $activ_code_hash_comfirm;
- 
-		/* else  if (isset($_GET['activation_link']))
-		{
-		$activ_code_hash_comfirm =  $_GET['activation_link'];
-		$email =  $_GET['email'];    
-		}    */
-		$act_status = 1;
-		$activated_on = date('Y-m-d H:i:s');  
-		$sql = "SELECT id, activation_code FROM user WHERE email = '$email'";
-		$result = mysqli_query($con, $sql);
-		$row = mysqli_fetch_array($result);
+		//Control Contact us page
+		if (isset($_GET['contact_us'])) 
+		{ 
+			include 'views/contact.html.php';
 
-		$userid = $row['id'];
-		$activ_c_db = $row['activation_code'];
-		$activ_c_db_hash = MD5($activ_c_db);
+			exit(0);
+		}	
 
-		if ($activ_c_db_hash !== $activ_code_hash_comfirm)
-		{
-			session_start();
-			$button = 'Sign Up';
-			$_SESSION['activ_code_hash']  = $activ_code_hash_comfirm;
-			//  $_SESSION['error'] = 'Activation code entered not correct! Please try again.'. mysqli_error($con);
-	
-			echo ' <br>
-			<div class="alert alert-danger alert-dismissible" role="alert" align = "center">
-			<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button> 
-			Activation code entered not correct! Please try again
-			</div>';
-	
-			include 'views/signup.html.php';
-			exit(0);	
+		//Control About us page
+		if (isset($_GET['about_us'])) 
+		{ 
+			include 'views/about.html.php';
+
+			exit(0);
 		}
-		$sql = "UPDATE user SET
-		account_status ='$act_status', 
-		activation_date = '$activated_on'
-		WHERE email='$email'";
-		if (!mysqli_query($con, $sql))
-		{
-	
-			$_SESSION['error'] = 'Error updating user account status! Please try again.'. mysqli_error($con);
-			include 'views/signup.html.php';
-			exit();
-		} 
-		//$_SESSION['msg'] = "Activation successful. You may proceed to login";
-		//echo "<script>alert('Activation successful. You may proceed to login.');</script>";
-		unset($_SESSION['activ_code_hash']);
-		echo '
-			<div align="center" class="alert alert-success" style=" background-color:green;"><i class="fa fa-fw fa-thumbs-up"></i><font color="white"><i class="glyphicon glyphicon-ok"></i><b>&nbsp;Activation successful. You may proceed to login </b></font></div>
-			';
 
-		echo '
-				<div style="visibility:hidden">
-				<script>
-				window.location.href="app/";
-				</script>
-				</div>';
-				//header('Location: admin/') ;
-				//window.parent.location.href="admin/";
-		exit(0);
-}
-    
 	
-		 //Send contact-us message
- if (isset($_GET['submitcontactform']))
+	//newsletters
+	if (isset($_GET['newsletters'])) 
+	{ 
+		include 'app/models/includes/dbConfig.inc.php' ;
+		$newsl = mysqli_real_escape_string($con, $_POST['newsl']);
+		
+		// check if the email is already subscribed
+		$result = mysqli_query($con, "SELECT nid FROM newsletters WHERE nemail = '$newsl' ");
+		$rowcount =  mysqli_num_rows($result);
+		if ($rowcount > 0)
+		{
+			$error = 'Error subscribing to newsletter. This email subscribed already!';
+							
+			include 'views/home.html.php';
+			mysqli_close($con);
+			exit (0);
+		}
+			$sql = "INSERT INTO newsletters SET
+					nemail ='$newsl'";
+			$result = mysqli_query($con, $sql);
+ 
+				$_SESSION['msgr'] = "Thank you for subscribing to our newsletter." ;
+				include 'views/home.html.php';
+				mysqli_close($con);
+				exit (0);
+	}
+			
+	//Send contact-us message
+	if (isset($_GET['submitcontactform']))
 	{
-			function sanitize($data)
-			{
-				$data = trim($data);
-				$data = stripcslashes($data);
-				$data = htmlspecialchars($data);
-				
-				return $data;
-			}
-			session_start();
+		function sanitize($data)
+		{
+			$data = trim($data);
+			$data = stripcslashes($data);
+			$data = htmlspecialchars($data);
+			
+			return $data;
+		}
+				session_start();
 			
 			
-			$cname = sanitize($_POST['contactname']);
-			$cemail = sanitize($_POST['contactemail']);
-			$subject = sanitize($_POST['contactsubject']);
-			$message = sanitize($_POST['contactmessage']);
+				$cname = sanitize($_POST['contactname']);
+				$cemail = sanitize($_POST['contactemail']);
+				$subject = sanitize($_POST['contactsubject']);
+				$message = sanitize($_POST['contactmessage']);
 			
 		
-			$ip = getenv('HTTP_CLIENT_IP')?:
-			getenv('HTTP_X_FORWARDED_FOR')?:
-			getenv('HTTP_X_FORWARDED')?:
-			getenv('HTTP_FORWARDED_FOR')?:
-			getenv('HTTP_FORWARDED')?:
-			getenv('REMOTE_ADDR');
+				$ip = getenv('HTTP_CLIENT_IP')?:
+				getenv('HTTP_X_FORWARDED_FOR')?:
+				getenv('HTTP_X_FORWARDED')?:
+				getenv('HTTP_FORWARDED_FOR')?:
+				getenv('HTTP_FORWARDED')?:
+				getenv('REMOTE_ADDR');
 
-			$query = @unserialize(file_get_contents('http://ip-api.com/php/'.$ip));
-			$query2 = @json_decode(file_get_contents("https://api.ipdata.co/{$ip}"));
+				$query = @unserialize(file_get_contents('http://ip-api.com/php/'.$ip));
+				$query2 = @json_decode(file_get_contents("https://api.ipdata.co/{$ip}"));
 			if($query && $query['status'] == 'success') 
 			{
 				$ipDetails = 'This visitor visited from ' .$ip. ' | '.$query['country'].', '.$query['regionName'] .', '.$query['city'].' with IP Address of - '.$query['query'];
@@ -484,28 +391,23 @@ $htmlcontent =
 	
 
 				$send  = @mail($to, $subject, $htmlcontent, $headers);				
-				
-
+			
 			}
 
-
-			
 			//mail($to,$subject,$txt,$headers);
 			if ($send) 
 			{
 				//$sent_email=1;
-				$_SESSION['msg'] = "Message is sent. Thank you for reaching out to us, One of our Agent will get in touch with you within 48 hours. Do have a great day!";
+				$_SESSION['msg'] = "Message sent. Thank you for reaching out to us, One of our agent will get in touch with you shortly. Do have a great day!";
 
-				//include 'inludes/contact-us-msg.inc.php';
-				//$_SESSION['msg'] = "Your message is sent successfully. Thank you very much for your interest in our services, one of our representatives will get in touch with you within 24 hours.";
-				include 'pages/contact-us.html.php';
-				exit();
+				include 'views/contact.html.php';
+				exit(0);
 			} else   
 			{
 				$_SESSION['error'] = "Error occured. Could not send email";
-				//	$_SESSION['error'] = 'Error something went wrong! Please try again or send email directly to info@didoversol.com.ng.';
-				include 'pages/contact-us.html.php';
-				exit();
+				
+				include 'views/contact.html.php';
+				exit(0);
 			}
 	}	
 		//display the home page when no other directives is selected.

@@ -1,16 +1,17 @@
 <?php 
-$pagetitle = "Login";
+		$pagetitle = "Login";
+		include 'models/includes/html-output-helpers.inc.php'; 
 ?>
 	<!DOCTYPE html>
 	<html lang="en" class="no-js">
 <!-- Start of Header -->
-		<?php include 'views/layouts/headerfend.inc.html.php'; ?>
+		<?php include 'views/layouts/headerbend.inc.html.php'; ?>
 		<!-- End of Header -->
 		<body class="hold-transition ">	
 			<!-- Scroll to Top-->
 			<button onclick="topFunction()" id="myBtn" title = "Go to top">Top</button>
 			<!-- header for navigation -->
-			<?php include 'views/layouts/navfend.inc.html.php'; ?>
+			<?php include 'views/layouts/navbend.inc.html.php'; ?>
 			<!-- #header for Navigation-->
 	  
 			<!-- start banner Area -->
@@ -38,25 +39,27 @@ $pagetitle = "Login";
 					  <!-- /.login-logo -->
 					  <div class="card card-outline card-warning">
 						<div class="card-header text-center">
-						  <a href="." class="h1"><?php echo $phtitle; ?></a>
+						  <a href="." class="h1"><?php echo $app_header_title; ?></a>
 						</div>
 							<!-- Display message here-->  
-							<p align="center" style="font-size:16px; color:red"> 
-						   
-							<?php if(isset($error)) { echo html($error);  } ?></p>
-						   
-							<?php include'layouts/messages.inc.html.php'; ?>
+						<?php 
+	
+							
+									include'views/layouts/messages.inc.html.php';
+																	
+						?>
 							<p align="center" style="font-size:16px; color:red"> 
 							<?php if (isset($GLOBALS['loginError'])): ?>
 							<?php echo html($GLOBALS['loginError']); ?></p>
 							<?php endif; ?>
+							
 						<div class="card-body">
-						<h1 class="text"> Login </h1>
+						<h1 class="text"> <?php echo $pagetitle ?> </h1>
 						  <p class="login-box-msg"><i>Sign in to start your session</i></p>
 
-						  <form action="" method="post">
+						  <form method="post" >
 							<div class="input-group mb-3">
-							  <input name "email" value = "<?php  echo $email; ?>" type="email" class="form-control" placeholder="Enter Registered Email" required>
+							  <input name = "email" value = "" type="email" class="form-control" placeholder="Enter Registered Email" required>
 							  <div class="input-group-append">
 								<div class="input-group-text">
 								  <span class="fa fa-envelope"></span>
@@ -64,7 +67,7 @@ $pagetitle = "Login";
 							  </div>
 							</div>
 							<div class="input-group mb-3">
-							  <input name="password" type="password"  class="form-control" placeholder="Password" required>
+							  <input name ="password" type = "password"  class="form-control" placeholder="Password" required>
 							  <div class="input-group-append">
 								<div class="input-group-text">
 								  <span class="fa fa-lock"></span>
@@ -74,16 +77,16 @@ $pagetitle = "Login";
 							<div class="row">
 							  <div class="col-8">
 								<div class="icheck-primary">
-								  <input type="checkbox" id="remember" name = "remember" value "1" >
-								  <label for="remember">
+								  <input type="checkbox" id="remember" name = "remember" value "1" required>
+								  <small for="remember">
 									Remember Me
-								  </label>
+								  </small>
 								</div>
 							  </div>
 							  <!-- /.col -->
 							  <div class="col-4">
 							  <input type="hidden" name = "action" value = "login"/>
-							<input type="submit" class="btn btn-success btn-block" value = "Log in"/>
+							<button type="submit"  class="btn btn-success btn-block" value = "Log in"> Log in</button>
 							  </div>
 							  <!-- /.col -->
 							</div>
@@ -103,7 +106,7 @@ $pagetitle = "Login";
 							<a href="?forgot_password">Retrieve</a>
 						  </p>
 						  <p class="mb-0"> New to this space? 
-							<a href="?sign_up" class="text-center">Sign Up</a>
+							<a href="../?sign_up" class="text-center">Sign Up</a>
 						  </p>
 						</div>
 						<!-- /.card-body -->
@@ -115,14 +118,14 @@ $pagetitle = "Login";
 				
 			</div>	
 		</section>
-			
+		<br><br>	
 			<!-- start footer Area -->		
-			<?php include 'views/layouts/footerfend.inc.html.php'; ?>
+			<?php include 'views/layouts/footerbend.inc.html.php'; ?>
 			<!-- End footer Area -->
 			
 			<!-- Core Scripts -->
 			<?php //include 'includes/layouts/scriptfend-did.inc.html.php'; ?>
-			<?php include 'views/layouts/scriptfend.inc.html.php'; ?>
+			<?php include 'views/layouts/scriptbend.inc.html.php'; ?>
 			<!--- Scripts ends here --->
 		</body>
 	</html>

@@ -35,9 +35,10 @@
 
 .prev-button,
 .next-button {
-  background: transparent;
+  background: transparent;  
   border: none;
   padding: 10px;
+  
 }
 
 .week {
@@ -71,6 +72,7 @@
   position: relative;
   display: inline-block;
   font-size: 110%;
+  
 }
 
 /* weekend */
@@ -142,4 +144,5 @@
   background: transparent;
   border: none;
   padding: 5px;
+  color: red;
 }

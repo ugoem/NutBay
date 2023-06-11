@@ -20,9 +20,9 @@ $pagetitle = "Contact";
 					<div class="row d-flex align-items-center justify-content-center">
 						<div class="about-content col-lg-12">
 							<h1 class="text-white">
-								Contact Us				
+								<?php echo $pagetitle; ?>				
 							</h1>	
-							<p class="text-white link-nav"><a href=".">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href="#"> Contact</a></p>
+							<p class="text-white link-nav"><a href=".">Home </a>  <span class="lnr lnr-arrow-right"></span><?php echo $pagetitle; ?></p>
 						</div>	
 					</div>
 				</div>
@@ -71,7 +71,7 @@ $pagetitle = "Contact";
 									<span class="lnr lnr-envelope"></span>
 								</div>
 								<div class="contact-details">
-									<h5>info@nutbay.com</h5>
+									<h5>info@nutsbay.com</h5>
 									<p>Send us your query anytime!</p>
 								</div>
 							</div>														

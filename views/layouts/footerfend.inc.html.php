@@ -10,9 +10,9 @@ $year = date('Y');
 					<div class="row">
 						<div class="col-lg-3  col-md-6 col-sm-6">
 							<div class="single-footer-widget">
-								<h6>About Agency</h6>
+								<h6>About NUTsBAY</h6>
 								<p>
-									NutBay is an easy to use social platform where professional nutritionist, herbalist, and dietitians as well as other internet users conglomerate to share ideas about natural solution to several health challenges facing humankind. 
+									NUTsBAY is an easy to use social platform where professional nutritionist, herbalist, and dietitians as well as other internet users conglomerate to share ideas about natural solution to several health challenges facing humankind. 
 								</p>
 							</div>
 						</div>
@@ -43,11 +43,10 @@ $year = date('Y');
 							<div class="single-footer-widget">
 					<!-- DIspalys messages-->
 					<?php 
-					if (isset($_GET['newsletters'])) 
-					{ 
-						include'views/layouts/messages.inc.html.php'; 
+					
+						include'app/views/layouts/messages.inc.html.php'; 
 						
-					}	?>
+						?>
 								<h6>Newsletter</h6>
 								<p>
 									Sign up for our newsletters here. We don't sparm you.									
@@ -79,8 +78,8 @@ $year = date('Y');
 									<li><img src="img/i8.jpg" alt=""></li>
 								</ul>
 							</div> -->
-							<!-- <h6 > Calendar </h6>     -->
-							<div class="calendar-wrapper" id="calendar-wrapper"></div>
+				 <h6 > Calendar </h6>    
+					<div class="calendar-wrapper single-footer-widget" id="calendar-wrapper"></div> 
 							
 
 								<!-- Calender starts here-->

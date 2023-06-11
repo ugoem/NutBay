@@ -16,17 +16,10 @@
 			<script src="views/assets/js/mail-script.js"></script>	
 			<script src="views/assets/js/main.js"></script>
 			<script src="views/assets/js/adminlte.min.js"></script>
-			<!-- Summernote -->
-			<script src="views/assets/plugins/summernote/summernote-bs4.min.js"></script>
+			<script src="https://player.vimeo.com/api/player.js"></script>
+
 			<!-- Page specific script -->
-			<script>
-				$(function () {
-					//Add text editor
-					$('#compose-textarea').summernote()
-				})
-			</script>
-			<!-- FontAwesome 5 
-			<script src="views/assets/plugins/fontawesome-free/js/fontawesome-all.min.js" ></script>      -->
+
 			
 			<!-- Calendar -->
 			<script src="https://cdn.jsdelivr.net/gh/wrick17/calendar-plugin@master/calendar.min.js"></script>
@@ -160,7 +153,7 @@
 						capital.classList.add("invalid");
 			}
 
-			// Validate numbers
+		 	// Validate numbers
 			var numbers = /[0-9]/g;
 			if(passVal.value.match(numbers)) {  
 				number.classList.remove("invalid");

@@ -1,226 +1,29 @@
 <?php 
 $pagetitle = "Post Activity";
 
+/*
 if (!userIsLoggedIn())
 	{
 
 		include 'views/login.html.php';
 		mysqli_close($con);
-		exit();
+		exit(0);
 	}
-?>
+	*/
 ?>
 <!DOCTYPE html>
 <html lang="en">
 		<!-- Start of Header -->
-		<?php include 'layouts/headerfend.inc.html.php'; ?>
+		<?php include 'layouts/headerbend.inc.html.php'; ?>
 		<!-- End of Header -->
 <body class="hold-transition sidebar-mini layout-navbar-fixed">
+			<!-- Scroll to Top-->
+			<button onclick="topFunction()" id="myBtn" title = "Go to top">Top</button>
 <div class="wrapper">
 
   <!-- Navbar -->
-  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-    <!-- Left navbar links -->
-    <ul class="navbar-nav">
-      <li class="nav-item">
-				      <!-- Logo area -->
-					  <div id="logo" >
-				        <a href="."><img src="views/assets/img/logo.png" alt="nutbay_logo" title="Logo" " /></a>
-				     
-					 </div>
-      </li>
+		<?php include 'layouts/nav_appbend.inc.html.php'; ?>
 
-      <!-- Navbar Search -->
-    <!--  <li class="nav-item">
-                <div class="col-md-12 offset-md-2">
-                    <form action="?search">
-                        <div class="input-group">
-                            <input type="search" class="form-control form-control-lg" placeholder="Type your keywords here">
-                            <div class="input-group-append">
-                                <button type="submit" class="btn btn-md btn-success">
-                                    <i class="fa fa-search"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-      </li>    -->
-	  
-	  
-			  <!-- SidebarSearch Form -->
-	<!--	<li class="nav-item">
-			  <div class="form-inline">
-				<div class="input-group" >
-				  <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
-				  <div class="input-group-append">
-					<button class="btn btn-sidebar">
-					  <i class="fa fa-search fa-fw"></i>
-					</button>
-				  </div>
-				</div>
-			  </div>  
-		</li>        -->
-      <!-- Navbar Search -->
-      <li class="nav-item">
-        <a class="nav-link" data-widget="navbar-search" href="#" role="button">
-          <i class="fa fa-search" title ="Search"></i>
-        </a>
-        <div class="navbar-search-block">
-          <form class="form-inline">
-            <div class="input-group input-group-sm">
-              <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-              <div class="input-group-append">
-                <button class="btn btn-navbar" type="submit">
-                  <i class="fa fa-search"></i>
-                </button>
-                <button class="btn btn-navbar" type="button" data-widget="navbar-search">
-                  <i class="fa fa-times"></i>
-                </button>
-              </div>
-            </div>
-          </form>
-        </div>
-      </li>
-    </ul>
-
-    <!-- Right navbar links -->
-    <ul class="navbar-nav ml-auto">
-	   
-		<li class="nav-item dropdown">
-			<a class="nav-link" data-widget="home" href="." role="button">
-			<i class="fa fa-home" title = "Home"></i>   
-			</a>
-		<!--	  <small class="text-sm text-muted"> Home </small>  -->
-		</li>
-      <li class="nav-item">
-        <a class="nav-link" data-widget="networks" href="#" role="button">
-          <i class="fa fa-users" title = "Networks"></i>
-		 <!-- <p> <small class="text-sm text-muted"> Networks </small>  </p>   -->
-        </a>
-      </li>
-      <!-- Messages Dropdown Menu -->
-      <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#">
-          <i class="fa fa-comment" title ="Messaging"></i>
-          <span class="badge badge-danger navbar-badge">3</span>
-        </a>
-        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <a href="#" class="dropdown-item">
-            <!-- Message Start -->
-            <div class="media">
-              <img src="views/assets/img/b1.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
-              <div class="media-body">
-                <h3 class="dropdown-item-title">
-                  Brad Diesel
-                  <span class="float-right text-sm text-danger"><i class="fa fa-star"></i></span>
-                </h3>
-                <p class="text-sm">Call me whenever you can...</p>
-                <p class="text-sm text-muted"><i class="fa fa-clock mr-1"></i> 4 Hours Ago</p>
-              </div>
-            </div>
-            <!-- Message End -->
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <!-- Message Start -->
-            <div class="media">
-              <img src="views/assets/img/b1.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-              <div class="media-body">
-                <h3 class="dropdown-item-title">
-                  John Pierce
-                  <span class="float-right text-sm text-muted"><i class="fa fa-star"></i></span>
-                </h3>
-                <p class="text-sm">I got your message bro</p>
-                <p class="text-sm text-muted"><i class="fa fa-clock mr-1"></i> 4 Hours Ago</p>
-              </div>
-            </div>
-            <!-- Message End -->
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <!-- Message Start -->
-            <div class="media">
-              <img src="views/assets/img/b1.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-              <div class="media-body">
-                <h3 class="dropdown-item-title">
-                  Nora Silvester
-                  <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
-                </h3>
-                <p class="text-sm">The subject goes here</p>
-                <p class="text-sm text-muted"><i class="fa fa-clock mr-1"></i> 4 Hours Ago</p>
-              </div>
-            </div>
-            <!-- Message End -->
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
-        </div>
-      </li>
-      <!-- Notifications Dropdown Menu -->
-      <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#">
-          <i class="fa fa-bell" title ="Notifications"></i>
-          <span class="badge badge-warning navbar-badge">15</span>
-        </a>
-        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <span class="dropdown-item dropdown-header">15 Notifications</span>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fa fa-envelope mr-2"></i> 4 new messages
-            <span class="float-right text-muted text-sm">3 mins</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fa fa-users mr-2"></i> 8 friend requests
-            <span class="float-right text-muted text-sm">12 hours</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fa fa-file mr-2"></i> 3 new reports
-            <span class="float-right text-muted text-sm">2 days</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
-        </div>
-      </li>
-	        <!-- Profile Dropdown Menu -->
-      <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#">
-          <i class="fa fa-user-circle" title ="Account/Settings"></i>
-          <span class="badge badge-success navbar-badge">Me</span>
-        </a>
-        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <span class="dropdown-item dropdown-header">put profile pix here</span>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fa fa-user mr-2"></i> Accounts
-            <span class="float-right text-muted text-sm">3 mins</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fa fa-envelope mr-2"></i> Manage
-            <span class="float-right text-muted text-sm">12 hours</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fa fa-file mr-2"></i> Settings
-            <span class="float-right text-muted text-sm">2 days</span>
-          </a>
-			<div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fa fa-sign-out mr-2"></i> Logout
-            <span class="float-right text-muted text-sm">2 days</span>
-          </a>
-        </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" data-widget="fullscreen" href="#" role="button">
-          <i class="fa fa-expand" title = "Fullscreen"></i>
-        </a>
-      </li>
-
-    </ul>
-  </nav>
   <!-- /.navbar -->
 
   
@@ -233,9 +36,27 @@ if (!userIsLoggedIn())
 	<br>
       <div class="container-fluid">
 	  
-	   <h3>Post Activity </h3>
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h3><?php echo $pagetitle; ?> </h3>
+          </div>
+	  
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href=".">Home</a></li>
+              <li class="breadcrumb-item active"><?php echo $pagetitle; ?></li>
+            </ol>
+          </div>
+        </div>
       </div><!-- /.container-fluid -->
-    </section>
+        			<!-- Display sign in success messages   -->
+	<?php 
+	
+
+			include'views/layouts/messages.inc.html.php'; 
+		
+	?>
+	</section>
 
     <!-- Main content -->
     <section class="content">
@@ -243,46 +64,15 @@ if (!userIsLoggedIn())
         <div class="row">
           <div class="col-md-3">
           
+<!-- sidebar profile details -->
+	<?php 
+	
 
-            <div class="card card-success card-outline">
+			include'layouts/sidebar_profile.inc.html.php'; 
+		
+	?>
+<!-- /.sidebar profile details -->
 
-	       
-            <!-- Widget: user widget style 1 -->
-            <div class="card card-widget widget-user">
-              <!-- Add the bg color to the header using any of the bg-* classes -->
-             
-			 <div class="widget-user-header text-white"
-                   style="background: url('views/assets/img/b2.jpg') center center;">
-                <h3 class="widget-user-username text-right">Anionovo Ugochukwu E.</h3>
-                <h5 class="widget-user-desc text-right"><em>Software Engineer</em></h5>
-              </div>
-              <div class="widget-user-image" >
-                <img class="img-circle elevation-2" src="views/assets/img/profile.jpg" alt="User Avatar">
-              </div> <br>
-			 <div class="card-body box-profile"> 
-			  <br>
-                <h2 class="profile-username text-center">Anionovo Ugochukwu E.</h2> 
-
-                <p class="text-muted text-center"><em>Software Engineer</em></p>
-
-                <ul class="list-group list-group-unbordered mb-3">
-                  <li class="list-group-item">
-                    <strong>Followers</strong> <a class="float-right">1,322</a>
-                  </li>
-                  <li class="list-group-item">
-                    Following <a class="float-right">543</a>
-                  </li>
-                  <li class="list-group-item">
-                    Friends <a class="float-right">13,287</a>
-                  </li>
-                </ul>
-
-                <a href="#" class="btn btn-default btn-block">Follow</a>
-				</div>
-            </div>
-            <!-- /.widget-user -->
-
-            </div>
             <!-- /.card -->
           
           </div>
@@ -650,78 +440,15 @@ if (!userIsLoggedIn())
         <!-- /.col -->
 		          <div class="col-md-3">
            
+<!-- Right bar content -->
+	<?php 
+	
 
-            <div class="card card-success card-outline">
-              <div class="card-header">
-                <h3 class="card-title">Add Feed</h3>
+			include'layouts/rightbar_app.inc.html.php'; 
+		
+	?>
+<!-- /.Right bar content -->
 
-                <div class="card-tools">
-                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                    <i class="fa fa-minus"></i>
-                  </button>
-                </div>
-              </div>
-              <div class="card-body p-0">
-                <ul class="nav nav-pills flex-column">
-                  <li class="nav-item active">
-                    <a href="#" class="nav-link">
-                      <i class="fa fa-inbox"></i> Inbox
-                      <span class="badge bg-success float-right">12</span>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="#" class="nav-link">
-                      <i class="fa fa-envelope"></i> Sent
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="#" class="nav-link">
-                      <i class="fa fa-file"></i> Drafts
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="#" class="nav-link">
-                      <i class="fa fa-filter"></i> Junk
-                      <span class="badge bg-warning float-right">65</span>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="#" class="nav-link">
-                      <i class="fa fa-trash"></i> Trash
-                    </a>
-                  </li>
-                </ul>
-              </div>
-              <!-- /.card-body -->
-            </div>
-            <!-- /.card -->
-            <div class="card card-success card-outline">
-              <div class="card-header">
-                <h3 class="card-title">Suggested Networks</h3>
-
-                <div class="card-tools">
-                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                    <i class="fa fa-minus"></i>
-                  </button>
-                </div>
-              </div>
-              <!-- /.card-header -->
-              <div class="card-body p-0">
-                <ul class="nav nav-pills flex-column">
-                  <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fa fa-circle text-danger"></i> Important</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fa fa-circle text-warning"></i> Promotions</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fa fa-circle text-primary"></i> Social</a>
-                  </li>
-                </ul>
-              </div>
-              <!-- /.card-body -->
-            </div>
-            <!-- /.card -->
           </div>
           <!-- /.col -->
       </div>
@@ -733,14 +460,14 @@ if (!userIsLoggedIn())
   <!-- /.content-wrapper -->
   
 	<!-- start footer Area -->		
-	<?php include 'layouts/footerfend.inc.html.php'; ?>
+	<?php include 'layouts/footerbend.inc.html.php'; ?>
 	<!-- End footer Area -->
 
 </div>
 <!-- ./wrapper -->
 
 <!-- Core Scripts -->
-<?php include 'layouts/scriptfend.inc.html.php'; ?>
+<?php include 'layouts/scriptbend.inc.html.php'; ?>
 <!--- Scripts ends here --->
 </body>
 </html>

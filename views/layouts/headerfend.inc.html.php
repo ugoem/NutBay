@@ -1,12 +1,12 @@
 <?php 
-		$appTitle = "NutBay";
-		$phtitle  = "<b>Nut</b>Bay";
+		$appTitle = "NUTsBAY";
+		$app_header_title  = "<b>NUTs</b>BAY";
 		$separator = " | ";
-		include 'models/includes/html-output-helpers.inc.php';
+		include 'app/models/includes/html-output-helpers.inc.php';
 ?>  
 <head>
 		<!-- Mobile Specific Meta -->
-		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
 		<meta http-equiv="x-ua-compatible" content="ie=edge">
 		
 		<!-- Author Meta -->
