@@ -1,10 +1,11 @@
-# NutBay
+# NUTsBAY
 *..Home of nature enthusiast..*
 
 
 ## [Landing Page](https://auenetengtech.com.ng/ugoem.tech)
 ![](https://auenetengtech.com.ng/alx/landing_page2.JPG)
 ![](https://auenetengtech.com.ng/alx/landing_page3.JPG)
+![image](views/assets/img/Landing page_new.jpg)
 
 # Description
 
