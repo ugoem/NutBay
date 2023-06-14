@@ -5,7 +5,10 @@
 ## [Landing Page](https://auenetengtech.com.ng/ugoem.tech)
 ![](https://auenetengtech.com.ng/alx/landing_page2.JPG)
 ![](https://auenetengtech.com.ng/alx/landing_page3.JPG)
-![My_image](views/assets/img/Landing page_new.jpg)
+![Landing page_new](views/assets/img/Landing page_new.jpg)
+
+![Landing page_new](https://github.com/ugoem/NutsBay/assets/24642339/f7d79c08-20ce-4d9b-a8ac-cc03fcba272d)
+
 
 # Description
 
