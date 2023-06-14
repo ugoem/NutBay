@@ -1,5 +1,5 @@
 # NUTsBAY
-*..Home of nature enthusiast..*
+*..Home of nature enthusiasts..*
 
 
 ## [Landing Page](https://auenetengtech.com.ng/ugoem.tech)
@@ -9,7 +9,7 @@
 ![landing page-footer](https://github.com/ugoem/NutsBay/assets/24642339/30f6f110-c04d-4537-afb1-eedb126efa38)
 
 
-# Description
+# Introduction
 
 NUTsBAY is a social platform where professional nutritionist and herbalist come together to share ideas about natural solution to several health challenges facing humankind. The sole purpose of the platform is to create a niche where those who believe specifically on the use of natural resources to advance and preserve human health, can connect freely with each other as well as the general public to offer free and paid services to their prospective beneficiaries.
 
@@ -32,7 +32,8 @@ https://medium.com/@ugoem/announcing-the-nutsbay-home-of-nature-enthusiasts-16a0
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
-
+@ugoem
+@Karlie-crypto
 <!-- markdownlint-restore -->
 <!-- prettier-ignore-end -->
 
