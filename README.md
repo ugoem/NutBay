@@ -5,8 +5,10 @@
 ## [Landing Page](https://auenetengtech.com.ng/ugoem.tech)
 
 ![Landing page_new](https://github.com/ugoem/NutsBay/assets/24642339/f7d79c08-20ce-4d9b-a8ac-cc03fcba272d)
-
 ![landing page-footer](https://github.com/ugoem/NutsBay/assets/24642339/30f6f110-c04d-4537-afb1-eedb126efa38)
+
+# Community Page
+![community_page](https://github.com/ugoem/NutsBay/assets/24642339/d949d7e2-cc8c-400b-8cfb-12dee0d256a9)
 
 
 # Introduction
